@@ -18,4 +18,21 @@ object Day2 {
     finalPosition.depth * finalPosition.horizontal
   }
 
+  case class State(horizontal: Int, depth: Int, aim: Int) {
+    def forward(amount: Int): State = this.copy(horizontal = horizontal + amount, depth = depth + (aim * amount))
+    def down(amount: Int): State = this.copy(aim = aim + amount)
+    def up(amount: Int): State = this.copy(aim = aim - amount)
+  }
+
+
+  def part2(instructions: List[String]): Int = {
+    val finalState = instructions
+      .foldLeft(State(0, 0, 0))((state, instruction) => instruction match {
+        case s"forward ${amount}" => state.forward(amount.toInt)
+        case s"down ${amount}" => state.down(amount.toInt)
+        case s"up ${amount}" => state.up(amount.toInt)
+      })
+    finalState.depth * finalState.horizontal
+  }
+
 }
