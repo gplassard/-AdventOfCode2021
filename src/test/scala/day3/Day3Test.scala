@@ -59,4 +59,39 @@ class Day3Test extends AnyWordSpec with Matchers {
     }
   }
 
+  "part2" should {
+    "work for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day3/sample.txt")).toScala(List)
+
+      Day3.part2(inputs) should equal(230)
+    }
+    "work for input" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day3/input.txt")).toScala(List)
+
+      Day3.part2(inputs) should equal(4790390)
+    }
+  }
+
+  "oxygenRating" should {
+    "be 10111 for 10110 and 10111" in {
+      Day3.oxygenRating(List("10110", "10111")) should equal("10111")
+    }
+    "be 10111 for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day3/sample.txt")).toScala(List)
+
+      Day3.oxygenRating(inputs) should equal("10111")
+    }
+  }
+
+  "co2Rating" should {
+    "be 01010 for 01111 and 01010" in {
+      Day3.co2Rating(List("01111", "01010")) should equal("01010")
+    }
+    "be 01010 for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day3/sample.txt")).toScala(List)
+
+      Day3.co2Rating(inputs) should equal("01010")
+    }
+  }
+
 }
