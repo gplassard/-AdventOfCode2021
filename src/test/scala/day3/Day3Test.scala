@@ -23,7 +23,7 @@ class Day3Test extends AnyWordSpec with Matchers {
     }
     "work for a line of 1" in {
       val inputs = List(
-        "00000000"
+        "11111111"
       )
       Day3.part1(inputs) should equal(0)
     }
@@ -35,7 +35,7 @@ class Day3Test extends AnyWordSpec with Matchers {
       val epsilon = Integer.parseInt("00001111", 2)
       Day3.part1(inputs) should equal(gamma * epsilon)
     }
-    "work for 3 lines of 1 and 0" in {
+    "work for multiple lines of 1 and 0" in {
       val inputs = List(
         "11110000",
         "11110000",
