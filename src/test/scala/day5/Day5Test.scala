@@ -24,5 +24,16 @@ class Day5Test extends AnyWordSpec with Matchers {
     }
   }
 
+  "part2" should {
+    "work for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day5/sample.txt")).toScala(List)
+      Day5.part2(inputs) should equal(12)
+    }
+    "work for input" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day5/input.txt")).toScala(List)
+      Day5.part2(inputs) should equal(17717)
+    }
+  }
+
 
 }
