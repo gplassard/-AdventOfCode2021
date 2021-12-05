@@ -67,4 +67,15 @@ class Day4Test extends AnyWordSpec with Matchers {
     }
   }
 
+  "part2" should {
+    "work for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day4/sample.txt")).toScala(List)
+      Day4.part2(inputs) should equal(1924)
+    }
+    "work for input" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day4/input.txt")).toScala(List)
+      Day4.part2(inputs) should equal(22704)
+    }
+  }
+
 }

@@ -62,4 +62,21 @@ object Day4 {
     score
   }
 
+  def part2(input: List[String]): Int = {
+    val (numbers, boards) = parseInput(input)
+
+    var score = 0
+    var alreadyCompleted = Set.empty[Board]
+    for (length <- numbers.indices) {
+      val selectedNumbers = numbers.take(length + 1).toSet
+      for (board <- boards) {
+        if (!alreadyCompleted.contains(board) && board.isBingo(selectedNumbers)) {
+          score = board.score(selectedNumbers, numbers(length))
+          alreadyCompleted = alreadyCompleted + board
+        }
+      }
+    }
+    score
+  }
+
 }
