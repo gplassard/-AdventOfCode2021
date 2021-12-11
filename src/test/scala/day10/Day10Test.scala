@@ -27,4 +27,33 @@ class Day10Test extends AnyWordSpec with Matchers {
     }
   }
 
+  "completingCharacters" should {
+    "complete the first incomplete line" in {
+      Day10.completingCharacters("[({(<(())[]>[[{[]{<()<>>") should equal(List('}', '}', ']', ']', ')', '}', ')', ']'))
+    }
+    "complete the second incomplete line" in {
+      Day10.completingCharacters("[(()[<>])]({[<{<<[]>>(") should equal(List(')', '}', '>', ']', '}', ')'))
+    }
+  }
+
+  "part2Score" should {
+    "compute score for the first incomplete line" in {
+      Day10.part2Score(List('}', '}', ']', ']', ')', '}', ')', ']')) should equal(288957)
+    }
+    "compute score for the second incomplete line" in {
+      Day10.part2Score(List(')', '}', '>', ']', '}', ')')) should equal(5566)
+    }
+  }
+
+  "part2" should {
+    "work for sample" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day10/sample.txt")).toScala(List)
+      Day10.part2(inputs) should equal(288957)
+    }
+    "work for input" in {
+      val inputs = Files.lines(Paths.get("src/test/resources/day10/input.txt")).toScala(List)
+      Day10.part2(inputs) should equal(3490802734L)
+    }
+  }
+
 }
